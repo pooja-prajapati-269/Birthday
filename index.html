@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="hi">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Reena Mam Birthday Book</title>
-        <!-- Tailwind CSS for modern styling -->
-        <script src="https://cdn.tailwindcss.com"></script>
-        <!-- jQuery and Turn.js -->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.min.js"></script>
-        <style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Reena Mam! 🎉</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.min.js"></script>
+    <style>
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Inter:wght@400;700&display=swap');
 
         body {
-            background: linear-gradient(135deg, #1f2937, #4b5563);
+            background: linear-gradient(135deg, #1f2937, #374151); /* Darker, more elegant gradient */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -42,15 +42,30 @@
         }
 
         #flipbook .page {
-            background-color: #f3f4f6;
-            color: #374151;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            background-color: #f8f9fa; /* Lighter page color for better contrast */
+            color: #212529;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
             box-sizing: border-box;
-            padding: 2.5rem;
+            padding: 3rem 4rem; /* More generous padding */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            text-align: center;
+            border: 1px solid #dee2e6; /* Subtle border */
+        }
+
+        /* New framed page style */
+        .page-frame {
+            position: relative;
+            padding: 3rem 4rem;
+            background-color: #ffffff;
+            border: 10px solid transparent;
+            border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none"><defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f8a5c2"/><stop offset="100%" stop-color="#b6a2e4"/></linearGradient></defs><rect x="0" y="0" width="100%" height="100%" fill="url(#g)"/></svg>') 20 round;
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-frame h2, .page-frame p {
             text-align: center;
         }
 
@@ -66,59 +81,96 @@
             color: white;
             padding: 0;
         }
+        
+        .cover-text {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+        }
 
-        /* Back Cover */
+        /* Back Cover - Updated to red background */
         #flipbook .hard.back {
-            background: linear-gradient(135deg, #d32f2f, #9c27b0);
+            background-color: #ff4d4d; /* Red background */
             border-radius: 12px;
             color: white;
             padding: 0;
             display: flex;
+            flex-direction: column; /* To stack text vertically */
             justify-content: center;
             align-items: center;
+            text-align: center;
         }
         
+        .back-cover-text {
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
         /* Inner pages styling */
         .page.content-page {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            text-align: center;
+            padding: 3rem 5rem;
+        }
+        
+        .content-page p {
+            margin-top: 1rem;
+            line-height: 1.8;
+            text-align: center;
+        }
+        
+        .page h2 {
+            color: #8a2be2; /* A richer purple */
+            margin-bottom: 1.5rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
         .page.image-page {
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 1rem;
+            padding: 2rem;
         }
         
         .page img {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
-            border-radius: 8px;
+            border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .page img:hover {
+            transform: scale(1.03);
         }
 
-        /* Last page heart */
+        /* Last page heart - Corrected positioning and rotation */
         .heart-container {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 1rem;
+            gap: 1.5rem;
             cursor: pointer;
-            animation: pulse 1.5s infinite;
+            animation: heartbeat 1.5s infinite; /* A more subtle, continuous heartbeat */
         }
 
         .heart {
             width: clamp(60px, 15vw, 120px);
             height: clamp(50px, 13vw, 100px);
             position: relative;
-            background: red;
-            transform: rotate(-45deg);
+            background: #ff4d4d;
+            transform: rotate(0deg); /* No rotation for the heart shape itself */
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            /* This forms the heart shape, so it needs to be rotated */
+            transform: rotate(-45deg); 
         }
 
         .heart::before,
@@ -127,7 +179,7 @@
             position: absolute;
             width: inherit;
             height: inherit;
-            background: red;
+            background: #ff4d4d;
             border-radius: 50%;
         }
 
@@ -141,15 +193,24 @@
             left: 50%;
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1) rotate(-45deg); } /* Keep the heartbeat animation with rotation */
+            50% { transform: scale(1.1) rotate(-45deg); }
+        }
+        
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .wish {
-            font-size: clamp(16px, 3vw, 24px);
+            font-size: clamp(18px, 3.5vw, 28px);
             font-weight: bold;
-            color: #ef4444;
+            color: #d90429; /* A darker red for wish text */
+            font-family: 'Dancing Script', cursive;
+            animation: fade-in 1s ease-out;
+            transform: none; /* Remove any rotation from the wish text */
+            margin-top: 1rem; /* Space between heart and text */
         }
         
         .message-box {
@@ -163,383 +224,298 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
             transition: transform 0.3s ease-in-out;
             transform: translateX(120%);
+            z-index: 100;
         }
 
         .message-box.show {
             transform: translateX(0);
         }
+
+        /* Navigation buttons style update */
+        .nav-btn {
+            background: #8a2be2;
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            font-weight: 600;
+        }
+        
+        .nav-btn:hover {
+            background: #7a1edc;
+            transform: translateY(-2px);
+        }
     </style>
-    </head>
-    <body>
+</head>
+<body>
 
-        <div class="book-wrapper">
-            <div id="flipbook">
+    <div class="book-wrapper">
+        <div id="flipbook">
 
-                <!-- Cover -->
-                <div class="hard cover"></div>
+            <div class="hard cover">
+                <div class="cover-text">
+                    <h1 class="text-4xl md:text-5xl font-extrabold font-['Dancing_Script']">Happy Birthday!</h1>
+                    <p class="mt-2 text-xl md:text-2xl font-['Inter']">To our dear Reena Ma'am</p>
+                </div>
+            </div>
 
-                <!-- Inner pages start here -->
+            <div class="page content-page page-frame">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 font-['Dancing_Script']">आपके लिए खास!</h2>
+                <p class="text-base md:text-lg text-center leading-relaxed">
+                    जन्मदिन मुबारक हो, रीना मैम,<br>
+                    खुशियों से भरा हो आपका हर पल।<br>
+                    आपकी मुस्कान यूँ ही बनी रहे,<br>
+                    जीवन में मिले सफलता हर पल।
+                </p>
+                <p class="mt-4 text-sm md:text-base italic leading-relaxed text-center">
+                    Happy Birthday, Reena Ma'am,<br>
+                    May every moment be filled with happiness.<br>
+                    May your smile always remain,<br>
+                    May you find success in every moment of life.
+                </p>
+            </div>
 
-                <!-- Page 1 (Shayari) -->
-                <div class="page content-page">
-                    <h2
-                        class="text-2xl md:text-3xl font-bold mb-4 text-purple-600 font-['Dancing_Script']">आपके
-                        लिए खास!</h2>
-                    <p class="text-base md:text-lg text-center leading-relaxed">
-                        जन्मदिन मुबारक हो, रीना मैम,<br>
-                        खुशियों से भरा हो आपका हर पल।<br>
-                        आपकी मुस्कान यूँ ही बनी रहे,<br>
-                        जीवन में मिले सफलता हर पल।
-                    </p>
-                    <p class="mt-4 text-sm md:text-base italic leading-relaxed">
-                        Happy Birthday, Reena Ma'am,<br>
-                        May every moment be filled with happiness.<br>
-                        May your smile always remain,<br>
-                        May you find success in every moment of life.
-                    </p>
+            <div class="page image-page page-frame">
+                <img src="assets/images/front.png" alt="Photo of Reena Mam 1">
+            </div>
+
+            <div class="page image-page page-frame">
+                <img src="assets/images/1.jpg" alt="Photo of Reena Mam 2">
+            </div>
+
+            <div class="page content-page page-frame">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 font-['Dancing_Script']">शुभकामनाएं!</h2>
+                <p class="text-base md:text-lg text-center leading-relaxed">
+                    हर दिन लाए आपके लिए नई उम्मीदें,<br>
+                    हर सुबह लाए आपके लिए खुशियों की सौगात।<br>
+                    जन्मदिन की ढेर सारी बधाई,<br>
+                    आप हमेशा यूँ ही मुस्कुराती रहें।
+                </p>
+                <p class="mt-4 text-sm md:text-base italic leading-relaxed text-center">
+                    May every day bring new hopes,<br>
+                    May every morning bring a gift of happiness.<br>
+                    Many many happy returns of the day,<br>
+                    May you always keep smiling.
+                </p>
+            </div>
+
+            <div class="page content-page page-frame">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 font-['Dancing_Script']">आपकी प्रेरणा के लिए</h2>
+                <p class="text-base md:text-lg text-center leading-relaxed">
+                    आपकी मेहनत, आपका जुनून,<br>
+                    हम सबके लिए एक मिसाल है।<br>
+                    आपके नेतृत्व में, हम आगे बढ़ते हैं,<br>
+                    जन्मदिन की बहुत-बहुत शुभकामनाएं!
+                </p>
+                <p class="mt-4 text-sm md:text-base italic leading-relaxed text-center">
+                    Your hard work, your passion,<br>
+                    is an example for all of us.<br>
+                    Under your leadership, we move forward,<br>
+                    Many many happy returns of the day!
+                </p>
+            </div>
+
+            <div class="page image-page page-frame">
+                <img src="assets/images/2.jpg" alt="Photo of Reena Mam 3">
+            </div>
+
+            <div class="page content-page page-frame">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 font-['Dancing_Script']">Graceful Leader & Elegant</h2>
+                <p class="text-base md:text-lg text-center leading-relaxed">
+                    Happy Birthday to our amazing leader, Reena Ma’am! You are not just a team leader, but a true mentor who teaches us how to smile through challenges, how to live without conflicts, and how to shine with hard work and kindness. Wishing you endless happiness, health, and success ahead!
+                </p>
+                <p class="mt-4 text-sm md:text-base italic leading-relaxed text-center">
+                    🎂✨ हमारी अद्भुत लीडर रीना मैम को जन्मदिन की हार्दिक शुभकामनाएँ! आप केवल एक टीम लीडर ही नहीं, बल्कि एक सच्ची मार्गदर्शक हैं, जो हमें चुनौतियों में भी मुस्कुराना सिखाती हैं, बिना किसी टकराव के जीवन जीना सिखाती हैं, और मेहनत व दयालुता से चमकना सिखाती हैं। आपके जीवन में हमेशा खुशियाँ, स्वास्थ्य और सफलता बनी रहे – यही हमारी दिल से दुआ है। 🌸💐
+                </p>
+            </div>
+
+            <div class="page content-page page-frame">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 font-['Dancing_Script']">Words may fall short...</h2>
+                <p class="text-base md:text-lg text-center leading-relaxed">
+                    Words may fall short when it comes to expressing the respect and gratitude I hold for you. You are more than just a senior, you are a mentor, a guide, and an inspiration 🫂. Your kindness, patience, and leadership have redefined what professionalism truly means. You’ve always motivated and supported us, not only as a leader but as someone who genuinely cares 🌸
+                </p>
+            </div>
+            
+            <div class="page content-page page-frame">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 font-['Dancing_Script']">Every day working with you...</h2>
+                <p class="text-base md:text-lg text-center leading-relaxed">
+                    ⭐ The way you handle challenges with positivity and uplift the whole team is truly admirable. On this special day, I want to thank you for everything you have done for us 🙏. Wishing you endless happiness, good health, and great success ahead.
+                    Happy Birthday Reena Mam!
+                </p>
+            </div>
+            
+            <div class="page image-page page-frame">
+                <img src="assets/images/3.jpg" alt="Photo of Reena Mam 4">
+            </div>
+            
+            <div class="page content-page page-frame">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 font-['Dancing_Script']">A Wish from Nilesh</h2>
+                <p class="text-base md:text-lg text-center leading-relaxed">
+                    "⭐ Your presence brings hope, your words inspire,
+                    Fueling our spirits to reach higher.
+                    May this birthday open doors anew,
+                    With joy, success, and peace for you.🙏"
+                    <br><br>
+                    ... Nilesh ...🌹
+                </p>
+            </div>
+
+            <div class="page content-page page-frame">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 font-['Dancing_Script']">A Wish from Tushar</h2>
+                <p class="text-base md:text-lg text-center leading-relaxed">
+                    "Jahan mein jitni bhi khushiyan ho,
+                    Woh sab aapke kadmon mein aayein,
+                    Dua hai meri bas itni,
+                    Aapka har din aapke janmdin ki tarah khaas ban jaaye.
+                    🌹 Happy Birthday Mam 🎂"
+                    <br><br>
+                    ... Tushar ...🌹
+                </p>
+            </div>
+
+            <div class="page content-page page-frame">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 font-['Dancing_Script']">A Wish from Aman</h2>
+                <p class="text-base md:text-lg text-center leading-relaxed">
+                    "To the person who leads us to success with wisdom, happy birthday. May your day be joyous..🎂"
+                    <br><br>
+                    ... Aman Kumar Badoli ... 🌹
+                </p>
+            </div>
+            
+            <div class="page content-page page-frame">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 font-['Dancing_Script']">A Wish from Lovely</h2>
+                <p class="text-base md:text-lg text-center leading-relaxed">
+                    "Wishing you a very happy birthday Reena! Here's to a year of new beginnings and reaching new heights in your career. Your innovative ideas and unwavering commitment to quality are what set you apart... May this new year be a powerful launchpad for your dreams, leading to more achievements and a future that is as bright as your potential.🎂"
+                    <br><br>
+                    ... Lovely Sharma ...🌹
+                </p>
+            </div>
+            
+            <div class="page content-page page-frame">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 font-['Dancing_Script']">A Wish from Aadil</h2>
+                <p class="text-base md:text-lg text-center leading-relaxed">
+                    "Happy Birthday, Reena Ma’am! 🎂✨ You inspire, uplift, and lead with a sparkle that never fades. Thank you for everything — from the bottom of my heart, Aadil cheers for your happiest year yet! Let’s make it unforgettable. 🥳"
+                    <br><br>
+                    ... Aadil ...🌹
+                </p>
+            </div>
+
+            <div class="page content-page page-frame">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 font-['Dancing_Script']">A Wish from Susmita</h2>
+                <p class="text-base md:text-lg text-center leading-relaxed">
+                    "When doubts surround and hope feels small,
+                    Your strength reminds us we can stand tall.
+                    This birthday reflects the love you’ve sown,
+                    And the happiness you’ve always shown. 🥳"
+                    <br><br>
+                    ... Susmita Dey ...🌹
+                </p>
+            </div>
+
+            <div class="page content-page page-frame">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 font-['Dancing_Script']">A Wish from Pooja</h2>
+                <p class="text-base md:text-lg text-center leading-relaxed">
+                    "Thinking 🥳"
+                    <br><br>
+                    ... Pooja Prajapati 🌹
+                </p>
+            </div>
+
+            <div class="page content-page page-frame">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 font-['Dancing_Script']">रीना मैम की चालीसा</h2>
+                <p class="text-base md:text-lg text-center leading-relaxed">
+                    जय रीना मैम, ज्ञान की मूरत,<br>
+                    टीम में लाए खुशियों की सूरत।<br>
+                    आपकी मेहनत, सबका कल्याण,<br>
+                    ज्ञान बांटें, दें हमें मान।<br>
+                    टीम की नेता, सबकी सहायक,<br>
+                    आपकी कृपा, सब सफल।<br>
+                    रीना मैम, आपका नाम महान,<br>
+                    आपके चरणों में, हमारा प्रणाम।
+                </p>
+            </div>
+
+            <div class="page content-page page-frame">
+                <div id="heart-container" class="heart-container">
+                    <div class="heart"></div>
+                    <p class="wish text-red-500">We All Love You A Lot!</p>
+                </div>
+                <p class="text-sm text-red-400 mt-4">Happy Birthday Reena Ma'am! ❤️</p>
                 </div>
 
-                <!-- Page 2 (Image) -->
-                <div class="page image-page">
-                    <img src="assets/images/front.png"
-                        alt="Photo of Reena Mam 1">
-                </div>
-
-                <!-- Page 3 (Image) -->
-                <div class="page image-page">
-                    <img src="assets/images/1.jpg" alt="Photo of Reena Mam 2">
-                </div>
-
-                <!-- Page 4 (Shayari) -->
-                <div class="page content-page">
-                    <h2
-                        class="text-2xl md:text-3xl font-bold mb-4 text-purple-600 font-['Dancing_Script']">शुभकामनाएं!</h2>
-                    <p class="text-base md:text-lg text-center leading-relaxed">
-                        हर दिन लाए आपके लिए नई उम्मीदें,<br>
-                        हर सुबह लाए आपके लिए खुशियों की सौगात।<br>
-                        जन्मदिन की ढेर सारी बधाई,<br>
-                        आप हमेशा यूँ ही मुस्कुराती रहें।
-                    </p>
-                    <p class="mt-4 text-sm md:text-base italic leading-relaxed">
-                        May every day bring new hopes,<br>
-                        May every morning bring a gift of happiness.<br>
-                        Many many happy returns of the day,<br>
-                        May you always keep smiling.
-                    </p>
-                </div>
-
-                <!-- Page 5 (Shayari and Poetry) -->
-                <div class="page content-page">
-                    <h2
-                        class="text-2xl md:text-3xl font-bold mb-4 text-purple-600 font-['Dancing_Script']">आपके
-                        प्रेरणा के लिए</h2>
-                    <p class="text-base md:text-lg text-center leading-relaxed">
-                        आपकी मेहनत, आपका जुनून,<br>
-                        हम सबके लिए एक मिसाल है।<br>
-                        आपके नेतृत्व में, हम आगे बढ़ते हैं,<br>
-                        जन्मदिन की बहुत-बहुत शुभकामनाएं!
-                    </p>
-                    <p class="mt-4 text-sm md:text-base italic leading-relaxed">
-                        Your hard work, your passion,<br>
-                        is an example for all of us.<br>
-                        Under your leadership, we move forward,<br>
-                        Many many happy returns of the day!
-                    </p>
-                </div>
-
-                <!-- Page 6 (Image) -->
-                <div class="page image-page">
-                    <img src="assets/images/2.jpg" alt="Photo of Reena Mam 3">
-                </div>
-
-                <!-- Page 7 (Shayari and Poetry) -->
-                <div class="page content-page">
-                    <h2
-                        class="text-2xl md:text-3xl font-bold mb-4 text-purple-600 font-['Dancing_Script']">
-                        Graceful Leader & Elegant</h2>
-                    <p class="text-base md:text-lg text-center leading-relaxed">
-                        Happy Birthday to our amazing leader, Reena Ma’am!
-                        You are not just a team leader, but a true mentor who
-                        teaches us how to smile through challenges,
-                        how to live without conflicts, and how to shine with
-                        hard work and kindness.
-                        Wishing you endless happiness, health, and success
-                        ahead!
-                    </p>
-                    <p class="mt-4 text-sm md:text-base italic leading-relaxed">
-                        🎂✨
-                        हमारी अद्भुत लीडर रीना मैम को जन्मदिन की हार्दिक
-                        शुभकामनाएँ!
-                        आप केवल एक टीम लीडर ही नहीं, बल्कि एक सच्ची मार्गदर्शक
-                        हैं,
-                        जो हमें चुनौतियों में भी मुस्कुराना सिखाती हैं,
-                        बिना किसी टकराव के जीवन जीना सिखाती हैं,
-                        और मेहनत व दयालुता से चमकना सिखाती हैं।
-                        आपके जीवन में हमेशा खुशियाँ, स्वास्थ्य और सफलता बनी रहे
-                        –
-                        यही हमारी दिल से दुआ है। 🌸💐
-                    </p>
-                </div>
-                <!-- Page 1 (Shayari) -->
-                <div class="page content-page">
-                    <h2
-                        class="text-2xl md:text-3xl font-bold mb-4 text-purple-600 font-['Dancing_Script']">Words
-                        may fall short when it comes to expressing the respect
-                        and gratitude I hold for you.</h2>
-                    <p class="text-base md:text-lg text-center leading-relaxed">
-                        You are more than just a senior, You are a mentor, a
-                        guide, and an inspiration 🫂. Your kindness, patience,
-                        and leadership have redefined what professionalism
-                        truuly means. You’ve always motivated and supported us,
-                        not only as a leader but as someone who genuinely cares
-                        🌸
-                    </p>
-                </div>
-                <div class="page content-page">
-                    <h2
-                        class="text-2xl md:text-3xl font-bold mb-4 text-purple-600 font-['Dancing_Script']">
-                        Every day working with you is a chance to learn
-                        something new.</h2>
-                    <p class="text-base md:text-lg text-center leading-relaxed">
-                        ⭐ The way you handle challenges with
-                        positivity and uplift the whole team is truly admirable.
-                        On this special day, I want to thank you for everything
-                        you have done for us 🙏
-
-                        Wishing you endless happiness, good health, and great
-                        success ahead.
-
-                        Happy Birthday Reena Mam!
-                    </p>
-                </div>
-
-                <!-- Page 8 (Image) -->
-                <div class="page image-page">
-                    <img src="assets/images/3.jpg" alt="Photo of Reena Mam 3">
-                </div>
-                <!-- Page 8 (Image) -->
-                <div class="page content-page">
-                    <h2
-                        class="text-2xl md:text-3xl font-bold mb-4 text-purple-600 font-['Dancing_Script']">
-                        Best Wishes</h2>
-
-                </div>
-                <!-- Page 8 (Image) -->
-                <div class="page content-page">
-                    <h2
-                        class="text-2xl md:text-3xl font-bold mb-4 text-purple-600 font-['Dancing_Script']">
-                        "... Nilesh ...🌹"</h2>
-                    <p class="text-base md:text-lg text-center leading-relaxed">
-
-                        "⭐ Your presence brings hope, your words inspire,
-                        Fueling our spirits to reach higher.
-                        May this birthday open doors anew,
-                        With joy, success, and peace for you.🙏"
-                    </p>
-                </div>
-                <!-- Page 8 (Image) -->
-                <div class="page content-page">
-                    <h2
-                        class="text-2xl md:text-3xl font-bold mb-4 text-purple-600 font-['Dancing_Script']">
-                        " ... Tushar ...🌹" </h2>
-                    <p class="text-base md:text-lg text-center leading-relaxed">
-
-                        "Jahan mein jitni bhi khushiyan ho,
-                        Woh sab aapke kadmon mein aayein,
-                        Dua hai meri bas itni,
-                        Aapka har din aapke janmdin ki tarah khaas ban jaaye.
-                        🌹 Happy Birthday Mam 🎂"
-                    </p>
-                </div>
-                <!-- Page 8 (Image) -->
-                <div class="page content-page">
-                    <h2
-                        class="text-2xl md:text-3xl font-bold mb-4 text-purple-600 font-['Dancing_Script']">
-                        "... Aman Kumar Badoli ... 🌹"</h2>
-                    <p class="text-base md:text-lg text-center leading-relaxed">
-
-                        "To the person who leads us to success with wisdom,
-                        happy birthday. May your day be joyous..🎂
-                        "
-                    </p>
-                </div>
-
-                <!-- Page 8 (Image) -->
-                <div class="page content-page">
-                    <h2
-                        class="text-2xl md:text-3xl font-bold mb-4 text-purple-600 font-['Dancing_Script']">
-                        " ... Lovely Sharma ...🌹"
-                    </h2>
-                    <p class="text-base md:text-lg text-center leading-relaxed">
-
-                        "Wishing you a very happy birthday Reena! Here's to a
-                        year of new beginnings and reaching new heights in your
-                        career. Your innovative ideas and unwavering commitment
-                        to quality are what set you apart. As you celebrate
-                        today, know that your positive contributions are noticed
-                        and deeply appreciated. You have a knack for looking on
-                        the bright side, and it's a quality that helps everyone
-                        around you not only think better but also perform
-                        exceptionally well. May this new year be a powerful
-                        launchpad for your dreams, leading to more achievements
-                        and a future that is as bright as your potential.🎂"
-                    </p>
-                </div>
-
-                <!-- Page 8 (Image) -->
-                <div class="page content-page">
-                    <h2
-                        class="text-2xl md:text-3xl font-bold mb-4 text-purple-600 font-['Dancing_Script']">
-                        "... Aadil ...🌹"</h2>
-                    <p class="text-base md:text-lg text-center leading-relaxed">
-
-                        "Happy Birthday, Reena Ma’am! 🎂✨
-                        You inspire, uplift, and lead with a sparkle that never
-                        fades. Thank you for everything — from the bottom of my
-                        heart, Aadil cheers for your happiest year yet! Let’s
-                        make it unforgettable. 🥳
-                        "
-                    </p>
-                </div>
-
-                <!-- Page 8 (Image) -->
-                <div class="page content-page">
-                    <h2
-                        class="text-2xl md:text-3xl font-bold mb-4 text-purple-600 font-['Dancing_Script']">
-                        "... Susmita Dey ...🌹"</h2>
-                    <p class="text-base md:text-lg text-center leading-relaxed">
-
-                        When doubts surround and hope feels small,
-                        Your strength reminds us we can stand tall.
-                        This birthday reflects the love you’ve sown,
-                        And the happiness you’ve always shown. 🥳
-                        "
-                    </p>
-                </div>
-
-                <!-- Page 8 (Image) -->
-                <div class="page content-page">
-                    <h2
-                        class="text-2xl md:text-3xl font-bold mb-4 text-purple-600 font-['Dancing_Script']">
-                        "Thinking 🥳"</h2>
-                    <p class="text-base md:text-lg text-center leading-relaxed">
-                        ... Pooja Prajapati 🌹
-                    </p>
-                </div>
-
-                <!-- Page 9 (Reena Mam ki Chalisa) -->
-                <div class="page content-page">
-                    <h2
-                        class="text-2xl md:text-3xl font-bold mb-4 text-purple-600 font-['Dancing_Script']">रीना
-                        मैम की चालीसा</h2>
-                    <p class="text-base md:text-lg text-center leading-relaxed">
-                        जय रीना मैम, ज्ञान की मूरत,<br>
-                        टीम में लाए खुशियों की सूरत।<br>
-                        आपकी मेहनत, सबका कल्याण,<br>
-                        ज्ञान बांटें, दें हमें मान।<br>
-                        टीम की नेता, सबकी सहयाक,<br>
-                        आपकी कृपा, सब सफल।<br>
-                        रीना मैम, आपका नाम महान,<br>
-                        आपके चरणों में, हमारा प्रणाम।
-                    </p>
-                </div>
-
-                <!-- Last Page (Heart) -->
-                <div class="page content-page">
-                    <div id="heart-container" class="heart-container">
-                        <div class="heart"></div>
-                        <p class="wish text-red-500">We All Love You A Lot!</p>
-                    </div>
-                    <p class="text-sm text-red-400 mt-4">Happy Birthday Reena
-                        Ma'am! ❤️</p>
-                    <!-- Audio files should be replaced with your own recorded messages -->
-                    <audio id="heart-sound"
-                        src="assets/audio/wish.mp3"></audio>
-                </div>
-
-                <!-- Back Cover -->
-                <div class="hard back">
-                    <h2
-                        class="text-4xl font-extrabold text-white font-['Dancing_Script']">With
-                        Love, Team</h2>
+            <div class="hard back">
+                <div class="back-cover-text">
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-white font-['Dancing_Script']">With Love, Team</h2>
+                    <p class="text-2xl md:text-3xl font-bold text-white font-['Dancing_Script'] mt-4">We All Love You A Lot!</p>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Navigation Buttons -->
-        <div class="mt-8 flex space-x-4">
-            <button id="prevBtn"
-                class="bg-purple-600 text-white px-6 py-2 rounded-full shadow-lg hover:bg-purple-700 transition-colors duration-300">
-                Previous
-            </button>
-            <button id="nextBtn"
-                class="bg-purple-600 text-white px-6 py-2 rounded-full shadow-lg hover:bg-purple-700 transition-colors duration-300">
-                Next
-            </button>
-        </div>
+    <div class="mt-8 flex space-x-4">
+        <button id="prevBtn" class="nav-btn">
+            Previous
+        </button>
+        <button id="nextBtn" class="nav-btn">
+            Next
+        </button>
+    </div>
 
-        <div id="message-box" class="message-box"></div>
+    <div id="message-box" class="message-box"></div>
 
-        <script>
-    $(document).ready(function() {
-        // Function to show a message
-        function showMessage(text) {
-            const msgBox = document.getElementById('message-box');
-            msgBox.textContent = text;
-            msgBox.classList.add('show');
-            setTimeout(() => {
-                msgBox.classList.remove('show');
-            }, 3000);
-        }
+    <script>
+        $(document).ready(function() {
+            // Function to show a message
+            function showMessage(text) {
+                const msgBox = document.getElementById('message-box');
+                msgBox.textContent = text;
+                msgBox.classList.add('show');
+                setTimeout(() => {
+                    msgBox.classList.remove('show');
+                }, 3000);
+            }
 
-        // Initialize the flipbook
-        function initFlipbook() {
-            const bookWidth = Math.min(window.innerWidth * 0.9, 1200);
-            const bookHeight = window.innerHeight * 0.8;
-            $('#flipbook').turn({
-                width: bookWidth,
-                height: bookHeight,
-                autoCenter: true,
-                gradients: true,
-                elevation: 50,
-                // The `pages` option determines the number of pages to display.
-                // It should be 2x the number of content pages plus 2 for the covers.
-                pages: 10
+            // Initialize the flipbook
+            function initFlipbook() {
+                const bookWidth = Math.min(window.innerWidth * 0.9, 1200);
+                const bookHeight = window.innerHeight * 0.8;
+                $('#flipbook').turn({
+                    width: bookWidth,
+                    height: bookHeight,
+                    autoCenter: true,
+                    gradients: true,
+                    elevation: 50,
+                    duration: 1000,
+                    pages: 22 // Adjusted page count (including new back cover content)
+                });
+            }
+            
+            // Handle window resize for responsiveness
+            $(window).on('resize', () => {
+                initFlipbook();
             });
-        }
-        
-        // Handle window resize for responsiveness
-        $(window).on('resize', () => {
+
+            // Initialize on page load
             initFlipbook();
+
+            // Heart click event listener (audio removed)
+            const heartContainer = document.getElementById('heart-container');
+            if (heartContainer) {
+                heartContainer.addEventListener('click', () => {
+                    showMessage("Happy Birthday Reena Ma'am! ❤️");
+                });
+            }
+
+            // Add event listeners for navigation buttons
+            $('#nextBtn').on('click', function() {
+                $('#flipbook').turn('next');
+            });
+
+            $('#prevBtn').on('click', function() {
+                $('#flipbook').turn('previous');
+            });
         });
-
-        // Initialize on page load
-        initFlipbook();
-
-        // Heart click event listener
-        const heartContainer = document.getElementById('heart-container');
-        const heartSound = document.getElementById('heart-sound');
-
-        // if (heartContainer && heartSound) {
-        //     heartContainer.addEventListener('click', () => {
-        //         heartSound.play().catch(e => {
-        //             console.error("Audio playback error:", e);
-        //             showMessage("Audio playback failed. Please check your browser's autoplay settings.");
-        //         });
-        //         showMessage("Happy Birthday Reena Ma'am! ❤️");
-        //     });
-        // }
-
-        // Add event listeners for navigation buttons
-        $('#nextBtn').on('click', function() {
-            $('#flipbook').turn('next');
-        });
-
-        $('#prevBtn').on('click', function() {
-            $('#flipbook').turn('previous');
-        });
-    });
-</script>
-
-    </body>
+    </script>
+</body>
 </html>
