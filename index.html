@@ -16,9 +16,9 @@
         <style>
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Inter:wght@400;700&display=swap');
 
-        body {
+        /* body {
             background: linear-gradient(135deg, #1f2937, #374151); /* Darker, more elegant gradient */
-            display: flex;
+            /* display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
@@ -27,7 +27,17 @@
             overflow: hidden;
             font-family: 'Inter', sans-serif;
             color: #d1d5db;
+        } */ 
+         body {
+            background: linear-gradient(135deg, #1f2937, #374151);
+            margin: 20px;
+            font-family: 'Inter', sans-serif;
+            color: #d1d5db;
+            min-height: 100vh;   /* allow body to grow with content */
+            overflow-x: hidden;  /* prevent horizontal scroll */
+            overflow-y: auto;    /* allow vertical scroll */
         }
+
 
         .book-wrapper {
             display: flex;
@@ -597,7 +607,10 @@
                     </div>
                 </div>
 
-                <div class="mt-8 flex space-x-4">
+                <div class="mt-[100px] flex space-x-4" style="
+    margin-top: -10px;
+    margin-left: 464px;
+">
                     <button id="prevBtn" class="nav-btn">
                         Previous
                     </button>
@@ -952,14 +965,14 @@
                         </div>
                     </div>
 
-                    <div class="mt-8 flex space-x-4">
+                    <!-- <div class="mt-8 flex space-x-4">
                         <button id="prevBtn" class="nav-btn">
                             Previous
                         </button>
                         <button id="nextBtn" class="nav-btn">
                             Next
                         </button>
-                    </div>
+                    </div> -->
 
                     <div id="message-box" class="message-box"></div>
                 </div>
